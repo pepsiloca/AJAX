@@ -46,17 +46,15 @@ renderList(response.data)
 function renderList(response){
         document.querySelector('.title').innerHTML=response.title;
         document.querySelector('h4').innerHTML=response.updated;
-        let events=response.entry;  //陣列
-
+        let events=response.entry;
 
         let str="";
         events.forEach(function(event,index){
-        str=str+`<li>${event.title}</li>`;
+            str=str+`<li>${event.title}</li>`;
         })
-
-
         document.querySelector('ul').innerHTML=str;
     }
+
 
 
 //建立錯誤處理

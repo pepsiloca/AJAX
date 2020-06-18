@@ -28,44 +28,41 @@
      
     //利用$.ajax()方法傳送請求並取得回應
  //方法1
-    /*    $.ajax(                 
+/*     $.ajax(
       {
         url:'https://kktix.com/events.json',
-        type:'GET',  //method的意思
+        type:'GET',
         success:function(response){
-          consolog.log(response)
+          console.log(response)
           renderList(response)
         },
         error:function(err){
-          consolog.log("err:"+err)
+          console.log("err:"+err)
         },
         complete:function(xhr,status){
-          consolog.log("status:"status)
+          console.log("status:"+status)
         }
       }
-    )  */ 
+    )    */ 
 
 //方法2
-      $.get('https://kktix.com/events.json',{'table':"news","id":12},function(response){
+  $.get('https://kktix.com/events.json',function(response){
 
-        console.log(response)
-        renderList(response)
-      }) 
+  // console.log(response)
+  renderList(response)
+
+  })
 
 
-
-    function renderList(response){
+  function renderList(response){
         document.querySelector('.title').innerHTML=response.title;
         document.querySelector('h4').innerHTML=response.updated;
-        let events=response.entry;  //陣列
-
+        let events=response.entry;
 
         let str="";
         events.forEach(function(event,index){
-        str=str+`<li>${event.title}</li>`;
+            str=str+`<li>${event.title}</li>`;
         })
-
-
         document.querySelector('ul').innerHTML=str;
     }
     

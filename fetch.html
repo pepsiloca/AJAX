@@ -27,31 +27,28 @@
     //建立FETCH請求及實質內容
     fetch('https://kktix.com/events.json',{method:'get'})
     .then(function(response){
-            return response.json()
-    })  
+        return response.json()
+    })
     .then(function(res){
-           console.log(res)
-           renderList(res)
-           
+        console.log(res)
+        renderList(res)
     })
     .catch(function(err){
-           console.log(err)
+        console.log(err)
     })
+    
 
 
 
     function renderList(response){
         document.querySelector('.title').innerHTML=response.title;
         document.querySelector('h4').innerHTML=response.updated;
-        let events=response.entry;  //陣列
-
+        let events=response.entry;
 
         let str="";
         events.forEach(function(event,index){
-        str=str+`<li>${event.title}</li>`;
+            str=str+`<li>${event.title}</li>`;
         })
-
-
         document.querySelector('ul').innerHTML=str;
     }
 
